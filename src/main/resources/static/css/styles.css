@@ -1,0 +1,320 @@
+
+/* ====== Global ====== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f4f6f9;
+    color: #1f2933;
+    line-height: 1.5;
+}
+
+/* Wrapper to center content */
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ====== Header / Nav ====== */
+
+.header {
+    background: #003366; /* dark MCC-ish blue */
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.site-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #e5efff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover {
+    background: #ffffff;
+    color: #003366;
+    border-color: #ffffff;
+}
+
+/* ====== Main Content ====== */
+
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+}
+
+.main-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Hero / Welcome section */
+
+.hero {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #003366;
+}
+
+.hero p {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: #4b5563;
+}
+
+/* Small tag line styled like a badge */
+.hero-tagline {
+    display: inline-block;
+    background: #e0ebff;
+    color: #003366;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+/* ====== Cards & Sections ====== */
+
+.section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+    gap: 1.5rem;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: #111827;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+/* List-style card content */
+.card ul {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.card ul li {
+    padding: 0.35rem 0;
+    font-size: 0.95rem;
+}
+
+/* ====== Buttons ====== */
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+    background: #0066aa; /* lighter MCC-ish blue */
+    color: #ffffff;
+    border-color: #0066aa;
+}
+
+.btn-primary:hover {
+    background: #004f7f;
+    border-color: #004f7f;
+    box-shadow: 0 4px 10px rgba(0, 102, 170, 0.35);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #0066aa;
+    border-color: #cbd5e1;
+}
+
+.btn-outline:hover {
+    background: #e0ebff;
+    border-color: #0066aa;
+}
+
+/* ====== Forms ====== */
+
+.form-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+    max-width: 480px;
+}
+
+.form-group {
+    margin-bottom: 0.9rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #111827;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #f9fafb;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #0066aa;
+    box-shadow: 0 0 0 2px rgba(0, 102, 170, 0.2);
+    background: #ffffff;
+}
+
+/* ====== Tables (for rides list) ====== */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.table-rides {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.table-rides thead {
+    background: #e0ebff;
+}
+
+.table-rides th,
+.table-rides td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.table-rides th {
+    font-weight: 600;
+    color: #111827;
+}
+
+.table-rides tr:hover {
+    background: #f3f4f6;
+}
+
+/* Badge for status or roles */
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge-success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* ====== Footer ====== */
+
+.footer {
+    margin-top: auto;
+    background: #111827;
+    color: #9ca3af;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ====== Responsive ====== */
+
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+}
