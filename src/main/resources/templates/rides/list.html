@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find a Ride · Campus Ride Share</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="page-wrapper">
+
+    <header class="header">
+        <div class="header-inner">
+            <div>
+                <div class="site-title">Campus Ride Share</div>
+                <div class="site-subtitle">MCC · Student Carpool & Campus Connections</div>
+            </div>
+            <nav class="nav-links">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/rides}" class="btn-outline">Find a Ride</a>
+                <a th:href="@{/rides/create}">Offer a Ride</a>
+                <a th:href="@{/login}">Sign In</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-inner">
+            <section class="hero">
+                <div class="hero-tagline">Find a Ride</div>
+                <h1>Available Rides</h1>
+                <p>Browse upcoming rides offered by other MCC students.</p>
+            </section>
+
+            <section class="card" style="margin-top: 1.5rem;">
+                <h2>Filter by Campus</h2>
+                <form th:action="@{/rides}" method="get" style="margin-top: 0.75rem;">
+                    <div class="form-group" style="max-width: 260px;">
+                        <label for="campus">Going to campus</label>
+                        <select id="campus" name="campus">
+                            <option value=""
+                                    th:selected="${selectedCampus == null or selectedCampus == ''}">
+                                All campuses
+                            </option>
+                            <option value="Fort Campus"
+                                    th:selected="${selectedCampus == 'Fort Campus'}">Fort Campus</option>
+                            <option value="South Campus"
+                                    th:selected="${selectedCampus == 'South Campus'}">South Campus</option>
+                            <option value="Elkhorn Campus"
+                                    th:selected="${selectedCampus == 'Elkhorn Campus'}">Elkhorn Campus</option>
+                            <option value="Do Space"
+                                    th:selected="${selectedCampus == 'Do Space'}">Do Space</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Apply Filter</button>
+                    <a class="btn btn-outline" th:href="@{/rides}">Clear</a>
+                </form>
+            </section>
+
+            <section class="card" style="margin-top: 1.5rem;">
+                <h2>Upcoming Rides</h2>
+
+                <div th:if="${#lists.isEmpty(rides)}" style="margin-top: 0.75rem;">
+                    <p>No rides available yet. Be the first to <a th:href="@{/rides/create}">offer a ride</a>!</p>
+                </div>
+
+                <div th:if="${!#lists.isEmpty(rides)}" class="table-wrapper" style="margin-top: 0.75rem;">
+                    <table class="table-rides">
+                        <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>To (Campus)</th>
+                            <th>Departure</th>
+                            <th>Seats</th>
+                            <th>Driver</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="ride : ${rides}">
+                            <td th:text="${ride.fromLocation}">Downtown</td>
+                            <td th:text="${ride.toCampus}">Elkhorn Campus</td>
+                            <td th:text="${#temporals.format(ride.departureTime, 'MMM d, yyyy h:mm a')}">
+                                Nov 20, 2025 3:00 PM
+                            </td>
+                            <td>
+                                <span th:text="${ride.availableSeats}">2</span>
+                                /
+                                <span th:text="${ride.totalSeats}">4</span>
+                            </td>
+                            <td th:text="${ride.driver.fullName}">Driver Name</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            &copy; <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}"></span>
+            Campus Ride Share · MCC Omaha (Student Project)
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

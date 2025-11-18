@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Ride Share</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="header">
+    <div class="header-inner">
+      <div>
+        <div class="site-title">Campus Ride Share</div>
+        <div class="site-subtitle">MCC · Student Carpool & Campus Connections</div>
+      </div>
+      <nav class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/rides}">Find a Ride</a>
+        <a th:href="@{/rides/create}">Offer a Ride</a>
+        <a th:href="@{/login}">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="main-inner">
+      <section class="hero">
+        <div class="hero-tagline">MCC Students · Omaha Metro</div>
+        <h1>Share a Ride. Save Time. Stay Connected.</h1>
+        <p>
+          This Campus Ride Share app helps MCC students coordinate rides between campuses
+          and around the Omaha metro area.
+        </p>
+        <p>
+          Offer a ride as a driver or join an existing ride as a passenger — safely and
+          conveniently within the MCC community.
+        </p>
+
+        <div style="margin-top: 1rem;">
+          <a class="btn btn-primary" th:href="@{/rides}">Browse Available Rides</a>
+          <a class="btn btn-outline" th:href="@{/rides/create}">Offer a Ride</a>
+        </div>
+      </section>
+
+      <section class="section-grid" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h2>How it Works</h2>
+          <ul>
+            <li>• Register with your MCC email address.</li>
+            <li>• Create a ride to any MCC campus or metro location.</li>
+            <li>• Set the date, time, and number of seats.</li>
+            <li>• Other students can sign up as passengers.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Why Use Ride Share?</h2>
+          <p>Save money, reduce stress, and build community:</p>
+          <ul>
+            <li>• Save on gas and parking.</li>
+            <li>• Coordinate inter-campus travel (Fort, South, Elkhorn, etc.).</li>
+            <li>• Support classmates who don’t have reliable transportation.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      &copy; <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}"></span>
+      Campus Ride Share · MCC Omaha (Student Project)
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
