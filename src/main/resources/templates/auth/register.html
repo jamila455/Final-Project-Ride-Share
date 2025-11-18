@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register · Campus Ride Share</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="page-wrapper">
+
+    <header class="header">
+        <div class="header-inner">
+            <div>
+                <div class="site-title">Campus Ride Share</div>
+                <div class="site-subtitle">MCC · Student Carpool &amp; Campus Connections</div>
+            </div>
+            <nav class="nav-links">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/rides}">Find a Ride</a>
+                <a th:href="@{/rides/create}">Offer a Ride</a>
+                <a th:href="@{/login}">Sign In</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-inner">
+
+            <section class="hero">
+                <div class="hero-tagline">Create your account</div>
+                <h1>Register as an MCC rider</h1>
+                <p>Sign up with your MCC email to offer and request rides.</p>
+            </section>
+
+            <section style="margin-top: 1.5rem;">
+                <div class="form-card">
+                    <div th:if="${error}" style="color: #b91c1c; margin-bottom: 0.75rem;">
+                        <p th:text="${error}">Error message</p>
+                    </div>
+
+                    <form th:action="@{/register}" th:object="${user}" method="post">
+                        <div class="form-group">
+                            <label for="fullName">Full name</label>
+                            <input id="fullName" type="text" th:field="*{fullName}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">MCC email</label>
+                            <input id="email" type="email" th:field="*{email}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" th:field="*{password}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="roleChoice">I primarily want to...</label>
+                            <select id="roleChoice" name="roleChoice" required>
+                                <option value="passenger">Ride as a passenger</option>
+                                <option value="driver">Offer rides as a driver</option>
+                                <option value="user">Both / not sure yet</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Create Account</button>
+                        <a class="btn btn-outline" th:href="@{/login}">Already have an account? Sign in</a>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            &copy; <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}"></span>
+            Campus Ride Share · MCC Omaha (Student Project)
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
