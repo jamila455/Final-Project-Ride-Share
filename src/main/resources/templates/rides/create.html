@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Offer a Ride · Campus Ride Share</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="header">
+    <div class="header-inner">
+      <div>
+        <div class="site-title">Campus Ride Share</div>
+        <div class="site-subtitle">MCC · Student Carpool &amp; Campus Connections</div>
+      </div>
+      <nav class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/rides}">Find a Ride</a>
+        <a th:href="@{/rides/create}" class="btn-outline">Offer a Ride</a>
+        <a th:href="@{/login}">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="main-inner">
+      <section class="hero">
+        <div class="hero-tagline">Offer a Ride</div>
+        <h1>Create a New Ride</h1>
+        <p>Share your ride with classmates traveling to the same campus.</p>
+      </section>
+
+      <section style="margin-top: 1.5rem;">
+        <div class="form-card">
+          <!-- NOTE: plain HTML fields, NO th:object / th:field -->
+          <form th:action="@{/rides/create}" method="post">
+
+            <div class="form-group">
+              <label for="fromLocation">From (pickup location)</label>
+              <input id="fromLocation" type="text" name="fromLocation" required>
+            </div>
+
+            <div class="form-group">
+              <label for="toCampus">To (campus)</label>
+              <select id="toCampus" name="toCampus" required>
+                <option value="">-- Select campus --</option>
+                <option value="Fort Campus">Fort Campus</option>
+                <option value="South Campus">South Campus</option>
+                <option value="Elkhorn Campus">Elkhorn Campus</option>
+                <option value="Do Space">Do Space</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="departureTime">Departure date &amp; time</label>
+              <input id="departureTime" type="datetime-local" name="departureTime" required>
+            </div>
+
+            <div class="form-group">
+              <label for="totalSeats">Total seats</label>
+              <input id="totalSeats" type="number" min="1" name="totalSeats" required>
+            </div>
+
+            <div class="form-group">
+              <label for="availableSeats">Available seats (leave blank to use total)</label>
+              <input id="availableSeats" type="number" min="1" name="availableSeats">
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Notes (optional)</label>
+              <textarea id="notes" rows="3" name="notes"
+                        placeholder="Where to meet, car details, etc."></textarea>
+            </div>
+
+            <hr style="margin: 1rem 0; border: none; border-top: 1px solid #e5e7eb;">
+
+            <div class="form-group">
+              <label for="driverName">Your name (driver)</label>
+              <input id="driverName" type="text" name="driverName" required>
+            </div>
+
+            <div class="form-group">
+              <label for="driverEmail">Your MCC email</label>
+              <input id="driverEmail" type="email" name="driverEmail" required>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Create Ride</button>
+            <a class="btn btn-outline" th:href="@{/rides}">Cancel</a>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      &copy; <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}"></span>
+      Campus Ride Share · MCC Omaha (Student Project)
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
